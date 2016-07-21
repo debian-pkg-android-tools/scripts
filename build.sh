@@ -29,6 +29,7 @@ android-platform-system-core
 function build() {
 	export DEB_BUILD_PROFILES=${2}
 	cd ${1}
+	echo "Building ${1}"
 	gbp buildpackage --git-no-pristine-tar
 	cd ..
 }
@@ -39,4 +40,4 @@ function build_all() {
 	done
 }
 
-build_all
+[ -z ${1} ] && build_all || build_repo ${1}

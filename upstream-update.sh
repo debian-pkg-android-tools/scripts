@@ -27,6 +27,7 @@ android-platform-system-core
 # $1: repo, like android-platform-build
 function update_repo() {
 	cd ${1}
+	echo "Updating ${1}"
 	# Not the cleanest
 	if ! git config remote.anonscm.url > /dev/null; then
 		git remote add anonscm https://anonscm.debian.org/git/android-tools/${1}
@@ -51,4 +52,4 @@ function update_all() {
 	done
 }
 
-update_all
+[ -z ${1} ] && update_all || update_repo ${1}
