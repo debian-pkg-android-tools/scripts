@@ -24,13 +24,16 @@ android-platform-build
 android-platform-system-core
 '
 
+MY_DIR="${BASH_SOURCE%/*}"
+if [[ ! -d "$MY_DIR" ]]; then MY_DIR="$PWD"; fi
+
 # $1 repo
 # $2 stage, empty by default
 function build() {
 	export DEB_BUILD_PROFILES=${2}
 	cd ${1}
-	echo "Building ${1}"
-	gbp buildpackage --git-no-pristine-tar
+	echo "Building ${1} ${2}"
+	debuild --post-dpkg-buildpackage-hook="${MY_DIR}/install-packages.sh %p %v %s %u" -b -us -uc
 	cd ..
 }
 
@@ -40,4 +43,4 @@ function build_all() {
 	done
 }
 
-[ -z ${1} ] && build_all || build_repo ${1}
+[ -z ${1} ] && build_all || build ${1%_*} ${1#*_}
