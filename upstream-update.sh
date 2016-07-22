@@ -35,6 +35,7 @@ function update_repo() {
 	git fetch anonscm
 	git stash # just in case.
 	git clean -fdx
+	git checkout anonscm/master
 	git branch -D master-update upstream pristine-tar
 	git branch master-update anonscm/master
 	git branch upstream anonscm/upstream
