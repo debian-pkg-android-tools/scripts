@@ -20,6 +20,9 @@ android-platform-frameworks-base
 android-platform-dalvik
 android-platform-build
 android-platform-system-core
+android-platform-external-doclava
+android-platform-external-jsilver
+android-platform-development
 '
 
 # Updates given repo to latest release

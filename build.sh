@@ -22,6 +22,10 @@ android-platform-frameworks-base
 android-platform-dalvik
 android-platform-build
 android-platform-system-core
+android-platform-external-doclava
+android-platform-external-jsilver
+android-platform-development
+android-sdk-meta
 '
 
 MY_DIR="${BASH_SOURCE%/*}"
